@@ -1,0 +1,38 @@
+#headImage {
+    background-image: url("../images/headImage2.jpg");
+}
+
+#details-container {
+    padding: 8%;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.loginRegisterForm {
+    margin: 0 auto;
+}
+
+h1 {
+    padding: 2rem;
+}
+
+#commentBox {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#commentAuthor {
+    text-decoration: underline;
+}
+
+.navbar-nav {
+    flex-direction: inherit;
+}
+
+.nav-item {
+    padding: 5px;
+}
