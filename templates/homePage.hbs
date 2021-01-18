@@ -1,0 +1,37 @@
+{{> header}}
+{{#if isLoggedIn}}
+<img src="../images/headImage3333.jpg" class="img-fluid" alt="Head books image">
+{{else}}
+<img src="../images/headImage33.jpg" class="img-fluid" alt="Head books image">
+{{/if}}
+<div class="container">
+    <h1 class="text-center">Books</h1>
+    <section>
+        {{#if isLoggedIn}}
+        <a href="/create" class="btn btn-warning ">Add Book</a>
+        {{/if}}
+        <form class="search float-right" method="GET" action="#/search">
+            <label>Search: </label>
+            <input type="text" name="searchedWord">
+            <input type="submit" class="btn btn-info" value="Search">
+        </form>
+    </section>
+    <br>
+
+    <div class="mt-3">
+        <div class="row d-flex d-wrap">
+                {{#each books}}
+                <div class="card col-md-4" >
+                    <img class="card-img-top" src="{{this.imageUrl}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.title}}</h5>
+                        <p class="card-text">By {{this.author}}</p>
+                        <a href="#/details/{{this.id}}" class="btn btn-info">Details</a>
+                    </div>
+                </div>
+                {{else}}
+                <h2>No books...</h2>
+                {{/each}}
+        </div>
+    </div>
+</div>

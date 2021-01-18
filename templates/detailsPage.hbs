@@ -1,0 +1,59 @@
+{{> header}}
+
+<section class="notifications" style="display: none;">
+    <p class="notification-message" id="errorBox">Message...</p>
+</section>
+<section class="notifications" style="display: none;background-color:rgba(1, 131, 29, 0.541);">
+    <p class="notification-message" id="successBox">Message...</p>
+</section>
+
+
+<div class="container">
+    <div class="row bg-light text-dark">
+         <div class="col-md-6">
+            <div class="container" id="details-container">
+                <h5>Title: {{book.title}}</h1>
+                <h5>Author: {{book.author}}</h1>
+                <h5>Genre: {{book.genre}}</h1>
+                <h5>Pages: {{book.pages}}</h1>
+                <h5 class="my-3 ">Book Description</h3>
+                <p>{{book.description}}</p>
+                {{#if isCreator}}
+                <a class="btn btn-danger" href="#/delete/{{book.id}}">Delete</a>
+                <a class="btn btn-warning" href="#/edit/{{book.id}}">Edit</a>
+                {{else}}
+                
+                {{#if isLoggedIn}}
+                <a class="btn btn-primary" href="#/like/{{book.id}}">Like the book</a>
+                {{/if}}
+                {{/if}}
+                <p class="likesParagraph">Liked by <strong>{{book.likesLength}}</strong> users</p>
+
+                {{#if isLoggedIn}}
+                <form method="POST" action="#/comment/{{book.id}}">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="newComment"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Comment</button>
+                </form>
+                {{/if}}
+                <h5>Comments </h5>
+                {{#each book.comments}}
+                <p id="commentBox">
+                    <span id="commentAuthor">Comment by <strong>{{this.email}}:</strong></span>
+                    <br>
+                    <span id="commentContent">{{this.newComment}}</span>
+                    {{else}}
+                    <span>No comments yet.</span>
+                </p>
+                <hr>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <img class="img-thumbnail" src="{{book.imageUrl}}" alt="Book Cover">
+        </div>
+    </div>
+</div>
+{{!-- {{> footer}} --}}
